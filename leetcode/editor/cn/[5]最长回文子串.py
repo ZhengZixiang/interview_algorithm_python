@@ -19,5 +19,22 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         res = ''
-        f
+        for i in range(len(s)):
+            # 奇数长度
+            l, r = i - 1, i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                l -= 1
+                r += 1
+            if len(res) < r - l - 1:
+                res = s[l + 1:r]
+
+            # 偶数长度
+            l, r = i, i + 1
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                l -= 1
+                r += 1
+            if len(res) < r - l - 1:
+                res = s[l + 1:r]
+        return res
+
 # leetcode submit region end(Prohibit modification and deletion)
